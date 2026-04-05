@@ -45,7 +45,7 @@ export default defineConfig({
         ...devices['Desktop Chrome'],
         baseURL: 'https://aqa-app.vercel.app/',
         // ТЕПЕР ПРАВИЛЬНО: headless має бути всередині use
-        headless: false,
+        headless: !!process.env.CI ? true : false,
       },
       // testIgnore стосується всього проекту, тому він поза use
       testIgnore: /.*api\.spec\.js/,
