@@ -9,7 +9,6 @@ test.describe('Api project', () => {
         expect(getResponse.status()).toBe(200)
 
         const body = await getResponse.json()
-        console.log(body);
     })
 
     test('POST playsholder', async ({ request }) => {
@@ -21,8 +20,6 @@ test.describe('Api project', () => {
         expect(postResponse.status()).toBe(201)
 
         const body = await postResponse.json()
-        console.log(body);
-
     })
 
     test('PATCH playsholder', async ({ request }) => {
@@ -36,6 +33,5 @@ test.describe('Api project', () => {
         expect(patchResponse.status()).toBe(200);
 
         expect(body.title).toBe(apiDataPatch.title);
-        console.log(body);
     })
 })
