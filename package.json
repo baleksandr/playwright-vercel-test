@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "npx playwright test",
-    "test_ui": "npx playwright test --project=ui --headed",
+    "ui-e2e": "npx playwright test --project=e2e-ui-test",
+    "test_ui": "npx playwright test --project=e2e-ui-test --headed",
     "api": "npx playwright test --project=api"
   },
   "keywords": [],

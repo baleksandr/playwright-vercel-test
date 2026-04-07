@@ -1,4 +1,3 @@
-import { expect } from '@playwright/test';
 import { BasePage } from './BasePage';
 
 export class CatalogPage extends BasePage {
@@ -14,11 +13,6 @@ export class CatalogPage extends BasePage {
         this.coffeeMachineName = page.locator('#product-name-6')
         this.tabletPrice = page.locator('#product-price-5')
         this.coffeeMachinePrice = page.locator('#product-price-6')
-
-        this.tabletNameValue = ''
-        this.coffeeMachineNameValue = ''
-        this.tabletPriceValue = ''
-        this.coffeeMachinePriceValue = ''
     }
 
     async selectProduct() {
@@ -26,18 +20,20 @@ export class CatalogPage extends BasePage {
         await this.tabletProdutButton.click()
     }
 
-    async basketCount(countItems) {
-        await expect(this.basketCountItems).toHaveText(countItems.toString())
-    }
-
-    async clickBasketBtn() {
+    async goToBasketBtn() {
         await this.basketLink.click()
     }
 
-    async saveProductInfo() {
-        this.tabletNameValue = await this.tabletName.textContent()
-        this.coffeeMachineNameValue = await this.coffeeMachineName.textContent()
-        this.tabletPriceValue = await this.tabletPrice.textContent()
-        this.coffeeMachinePriceValue = await this.coffeeMachinePrice.textContent()
+    async getProductInfo() {
+        return {
+            firstProduct: {
+                name: await this.tabletName.textContent(),
+                price: await this.tabletPrice.textContent()
+            },
+            secondProduct: {
+                name: await this.coffeeMachineName.textContent(),
+                price: await this.coffeeMachinePrice.textContent()
+            },
+        }
     }
 }

@@ -27,12 +27,7 @@ export default defineConfig({
     ['html'],
     ['list']
   ],
-  /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
-    /* Base URL to use in actions like `await page.goto('')`. */
-    // baseURL: 'http://localhost:3000',
-    // baseURL: 'https://aqa-app.vercel.app/',
-    /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
     trace: 'retain-on-failure',
     screenshot: 'on-first-failure'
   },
@@ -40,22 +35,19 @@ export default defineConfig({
   /* Configure projects for major browsers */
   projects: [
     {
-      name: 'ui',
+      name: 'e2e-ui-test',
       use: {
         ...devices['Desktop Chrome'],
-        baseURL: 'https://aqa-app.vercel.app/',
-        // ТЕПЕР ПРАВИЛЬНО: headless має бути всередині use
-        headless: !!process.env.CI ? true : false,
+        baseURL: process.env.UI_BASE_URL,
+        // headless: !!process.env.CI ? true : false,
       },
-      // testIgnore стосується всього проекту, тому він поза use
-      testIgnore: /.*api\.spec\.js/,
+      testMatch: /e2e\.spec\.js/,
     },
     {
       name: 'api',
       use: { 
         baseURL: process.env.API_BASE_URL
       },
-      // Цей проект запускатиме ТІЛЬКИ API тести
       testMatch: /api\.spec\.js/,
     },
 

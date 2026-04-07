@@ -11,7 +11,6 @@ export class LoginPage extends BasePage {
         this.catalogTitle = page.locator('#catalog-title');
         this.loginTitle = page.locator('#login-title');
         this.registerBtn = page.getByRole('button', { name: 'Register' })
-
     }
 
     async fillLoginData(loginData) {
@@ -24,10 +23,10 @@ export class LoginPage extends BasePage {
     }
 
     async checkLoginButtonVisibleState() {
-        const loginFieldsCVisibleState = [this.emailField, this.passwordField, this.loginButton, this.registerBtn]
+        const loginFieldsVisibility = [this.emailField, this.passwordField, this.loginButton, this.registerBtn]
 
-        for (const element of loginFieldsCVisibleState) {
-            await expect(element).toBeVisible()
+        for (const element of loginFieldsVisibility) {
+            await expect(element, `Елемент ${element} має бути видимим`).toBeVisible();
         }
     }
 }

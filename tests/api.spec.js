@@ -5,7 +5,6 @@ import { apiDataPost, apiDataPatch } from '../data/apiData';
 test.describe('Api project', () => {
     test('GET playsholder', async ({ request }) => {
         const getResponse = await request.get('posts/1');
-        console.log(getResponse.url());
         expect(getResponse.status()).toBe(200)
 
         const body = await getResponse.json()

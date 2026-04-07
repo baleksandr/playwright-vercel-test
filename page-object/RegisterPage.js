@@ -1,7 +1,6 @@
 import { BasePage } from './BasePage';
 
 export class RegisterPage extends BasePage {
-
     constructor(page) {
         super(page)
         this.page = page
