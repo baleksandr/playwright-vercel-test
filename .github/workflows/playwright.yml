@@ -27,6 +27,7 @@ jobs:
         CARD_DATE: ${{ secrets.CARD_DATE }}
         CARDCVV: ${{ secrets.CARDCVV }}
         API_BASE_URL: ${{ secrets.API_BASE_URL }}
+        UI_BASE_URL: ${{ secrets.UI_BASE_URL }} 
         CI: true
       run: npx playwright test
 

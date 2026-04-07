@@ -7,7 +7,7 @@ export class BasePage {
     }
 
     async openLoginPage(path = '') {
-        await this.page.goto(path)
+        await this.page.goto(path)    
     }
 
     async expectedMessage(locator, expextedText, customTimeout = 10000) {
