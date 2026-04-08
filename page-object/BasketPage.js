@@ -30,7 +30,7 @@ export class BasketPage {
         expect(totalProductPriceNumber).toBe(totalPrice)
     }
 
-    async checkoutButton() {
+    async goToCheckoutPage() {
         await this.proceedToCheckoutBtn.click()
     }
 

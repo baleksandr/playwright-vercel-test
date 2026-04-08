@@ -5,6 +5,7 @@ export class LoginPage extends BasePage {
     constructor(page) {
         super(page)
         this.page = page;
+        this.registerBtn = page.getByRole('button', { name: 'Register' })
         this.emailField = page.getByRole('textbox', { name: "Enter your email" })
         this.passwordField = page.getByRole('textbox', { name: "Enter your password" })
         this.loginButton = page.getByRole('button', { name: 'Login' })
@@ -20,6 +21,10 @@ export class LoginPage extends BasePage {
 
     async clickLoginButton() {
         await this.loginButton.click()
+    }
+
+    async clickRegisterButton() {
+        await this.registerBtn.click()
     }
 
     async checkLoginButtonVisibleState() {

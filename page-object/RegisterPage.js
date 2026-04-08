@@ -18,10 +18,6 @@ export class RegisterPage extends BasePage {
         this.registerSuccessAlert = page.locator('#register-success');
     }
 
-    async clickRegisterButton() {
-        await this.registerBtn.click()
-    }
-
     async fillData(testData) {
         await this.firstNameField.fill(testData.firstName)
         await this.lastNameField.fill(testData.lastName)

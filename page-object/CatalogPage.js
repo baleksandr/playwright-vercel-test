@@ -27,12 +27,12 @@ export class CatalogPage extends BasePage {
     async getProductInfo() {
         return {
             firstProduct: {
-                name: await this.tabletName.textContent(),
-                price: await this.tabletPrice.textContent()
+                name: (await this.tabletName.innerText()).trim(),
+                price: (await this.tabletPrice.innerText()).trim()
             },
             secondProduct: {
-                name: await this.coffeeMachineName.textContent(),
-                price: await this.coffeeMachinePrice.textContent()
+                name: (await this.coffeeMachineName.innerText()).trim(),
+                price: (await this.coffeeMachinePrice.innerText()).trim()
             },
         }
     }
