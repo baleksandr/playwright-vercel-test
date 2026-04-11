@@ -17,7 +17,6 @@ export const test = base.extend({
             checkoutPage: new CheckoutPage(page),
             myAccountPage: new MyAccountPage(page),
             basePage: new BasePage(page),
-
         }
         await use(app);
     }
