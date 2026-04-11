@@ -1,8 +1,6 @@
 import { test } from '../utils/fixtures';
-import { testData, cardData } from '../data/testData';
+import { cardData } from '../data/testData';
 import { expect } from '@playwright/test';
-import { afterEach } from 'node:test';
-import path from 'node:path';
 
 test.describe('E2e order flow', () => {
     test.beforeAll(async () => {
@@ -11,8 +9,9 @@ test.describe('E2e order flow', () => {
         console.log("beforeAll, ready");
     });
 
-    test.beforeEach(async () => {
-        console.log("beforeEach, precondition");
+    test.beforeEach(async ({page}) => {
+        console.log("beforeEach, open catalog Page");
+        await page.goto('/')
     });
 
     test.afterEach(async({page}, testInfo) => {
@@ -28,29 +27,10 @@ test.describe('E2e order flow', () => {
 
     test.afterAll(async() => {
         console.log('afterAll: cleanUp test data');
-        
     })
 
     test('Create user, login, order 2 items, payment', async ({ app }) => {
         let items = {}
-        await test.step('Open login page and go to Register form', async () => {
-            await app.loginPage.openLoginPage('/login')
-            await app.loginPage.clickRegisterButton()
-        })
-
-        await test.step('Register new user', async () => {
-            await app.basePage.checkPageURL('register')
-            await app.registerPage.fillData(testData)
-            await app.registerPage.submitRegistration()
-            await app.registerPage.expectedMessage(app.registerPage.registerSuccessAlert, '🎉 Registration successful! Redirecting to login...')
-        })
-
-        await test.step('Login with created user', async () => {
-            await app.basePage.checkPageURL('login')
-            await app.loginPage.fillLoginData(testData)
-            await app.loginPage.clickLoginButton()
-            await app.loginPage.expectedMessage(app.loginPage.catalogTitle, '🛍️ Welcome to Our Shop')
-        })
 
         await test.step('Select product from catalog', async () => {
             await app.catalogPage.selectProduct()

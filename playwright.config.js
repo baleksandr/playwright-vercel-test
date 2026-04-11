@@ -14,7 +14,6 @@ import 'dotenv/config';
  */
 export default defineConfig({
   testDir: './tests',
-  /* Run tests in files in parallel */
   fullyParallel: false,
   /* Fail the build on CI if you accidentally left test.only in the source code. */
   forbidOnly: !!process.env.CI,
@@ -31,21 +30,30 @@ export default defineConfig({
     trace: 'retain-on-failure',
     screenshot: 'on-first-failure'
   },
-
+  globalTeardown: './global-teardown.ts',
   /* Configure projects for major browsers */
   projects: [
     {
+      name: 'setup-up',
+      testMatch: 'auth.setup.js',
+      use: {
+        baseURL: process.env.UI_BASE_URL,
+      }
+    },
+    {
       name: 'e2e-ui-test',
+      testMatch: /e2e\.spec\.js/,
+      dependencies: ['setup-up'],
       use: {
         ...devices['Desktop Chrome'],
         baseURL: process.env.UI_BASE_URL,
         // headless: !!process.env.CI ? true : false,
+        storageState: 'data/storegState.json'
       },
-      testMatch: /e2e\.spec\.js/,
     },
     {
       name: 'api',
-      use: { 
+      use: {
         baseURL: process.env.API_BASE_URL
       },
       testMatch: /api\.spec\.js/,
