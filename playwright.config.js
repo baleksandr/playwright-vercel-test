@@ -23,8 +23,8 @@ export default defineConfig({
   workers: 1,
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
   reporter: [
-    ['html'],
-    ['list']
+    ['html', { open: 'never' }],
+    ['list'],
   ],
   use: {
     trace: 'retain-on-failure',
