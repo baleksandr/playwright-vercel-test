@@ -1,7 +1,8 @@
 import { test } from '../utils/fixtures';
 import { cardData } from '../data/testData';
-import { expect } from '@playwright/test';
+import { devices, expect } from '@playwright/test';
 
+// test.use({...devices['Pixel 7 landscape']})
 test.describe('E2e order flow', () => {
     test.beforeAll(async () => {
         console.log("beforeAll, prepere user");

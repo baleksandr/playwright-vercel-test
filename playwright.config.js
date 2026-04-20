@@ -28,7 +28,8 @@ export default defineConfig({
   ],
   use: {
     trace: 'retain-on-failure',
-    screenshot: 'on-first-failure'
+    screenshot: 'on-first-failure',
+    headless: true,
   },
   globalTeardown: './global-teardown.ts',
   /* Configure projects for major browsers */
@@ -45,10 +46,10 @@ export default defineConfig({
       testMatch: /e2e\.spec\.js/,
       dependencies: ['setup-up'],
       use: {
-        ...devices['Desktop Chrome'],
+
         baseURL: process.env.UI_BASE_URL,
         // headless: !!process.env.CI ? true : false,
-        storageState: 'data/storegState.json'
+        storageState: 'data/storegState.json',
       },
     },
     {
