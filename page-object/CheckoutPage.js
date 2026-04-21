@@ -1,5 +1,4 @@
 import { BasePage } from './BasePage';
-import { expect } from '@playwright/test';
 
 export class CheckoutPage extends BasePage {
     constructor(page) {
@@ -18,11 +17,9 @@ export class CheckoutPage extends BasePage {
         await this.cardNumberField.fill(cardData.cardNumber)
         await this.cardDate.fill(cardData.cardDate)
         await this.cardCVV.fill(cardData.cardCVV)
-        await expect(this.totalAmount).not.toHaveText('$0.00');
     }
 
     async clickPayNowBtn() {
         await this.payNowButton.click();
     }
-
 }

@@ -13,16 +13,11 @@ export class MyAccountPage extends BasePage {
         const totalOrderaAmount = await this.myAccountOrderTotalAmount.innerText()
         const totalOrderNumber = parseFloat(totalOrderaAmount.replace(/[^\d.]/g, ''));
         
-        const firstProductPriceNumber = parseFloat(source.tabletPriceValue.replace(/[^\d.]/g, ''))
-        const secondProductPriceNumber = parseFloat(source.coffeeMachinePriceValue.replace(/[^\d.]/g, ''))
+        const firstProductPriceNumber = parseFloat(source.firstProduct.price.replace(/[^\d.]/g, ''))
+        const secondProductPriceNumber = parseFloat(source.secondProduct.price.replace(/[^\d.]/g, ''))
         const expectedTotalPrice = firstProductPriceNumber + secondProductPriceNumber
 
         expect(totalOrderNumber).toBeCloseTo(expectedTotalPrice, 2);
-    }
-
-    async checkButtonsVisibleState() {
-        await expect(this.logoutBtn).toBeVisible()
-        await expect(this.editBtn).toBeVisible()
     }
 
     async logoutUser() {

@@ -1,7 +1,6 @@
 import { BasePage } from './BasePage';
 
 export class RegisterPage extends BasePage {
-
     constructor(page) {
         super(page)
         this.page = page
@@ -17,10 +16,6 @@ export class RegisterPage extends BasePage {
         this.registerStreetField = page.getByRole('textbox', { name: "Street and House Number" })
         this.registerZipField = page.getByRole('textbox', { name: "ZIP Code" })
         this.registerSuccessAlert = page.locator('#register-success');
-    }
-
-    async clickRegisterButton() {
-        await this.registerBtn.click()
     }
 
     async fillData(testData) {

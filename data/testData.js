@@ -3,7 +3,7 @@ import { faker } from '@faker-js/faker';
 export const testData = {
         firstName: faker.person.firstName(),
         lastName: faker.person.lastName(),
-        email: process.env.USER_EMAIL,
+        email: process.env.USER_EMAIL.replace('@', `+${Date.now()}@`),
         password: process.env.USER_PASSWORD,
         city: faker.location.city(),
         country: 'Ukraine',

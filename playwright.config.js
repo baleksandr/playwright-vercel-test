@@ -14,48 +14,56 @@ import 'dotenv/config';
  */
 export default defineConfig({
   testDir: './tests',
-  /* Run tests in files in parallel */
   fullyParallel: false,
   /* Fail the build on CI if you accidentally left test.only in the source code. */
   forbidOnly: !!process.env.CI,
   /* Retry on CI only */
   retries: process.env.CI ? 2 : 0,
   /* Opt out of parallel tests on CI. */
-  workers: 1,
+  workers: process.env.CI ? 2 : 1,
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
   reporter: [
-    ['html'],
-    ['list']
+    ['html', { open: 'never' }],
+    ['list'],
   ],
-  /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
-    /* Base URL to use in actions like `await page.goto('')`. */
-    // baseURL: 'http://localhost:3000',
-    // baseURL: 'https://aqa-app.vercel.app/',
-    /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
+    geolocation: {
+      latitude: 50.4501,
+      longitude: 30.5234
+    },
+    permissions: ['geolocation'],
+    timezoneId: 'Europe/London',
+    locale: 'en-US',
     trace: 'retain-on-failure',
-    screenshot: 'on-first-failure'
+    screenshot: 'on-first-failure',
+    headless: true,
   },
-
+  globalTeardown: './global-teardown.ts',
   /* Configure projects for major browsers */
   projects: [
     {
-      name: 'ui',
+      name: 'setup-up',
+      testMatch: 'auth.setup.js',
       use: {
-        ...devices['Desktop Chrome'],
-        baseURL: 'https://aqa-app.vercel.app/',
-        // ТЕПЕР ПРАВИЛЬНО: headless має бути всередині use
-        headless: !!process.env.CI ? true : false,
+        baseURL: process.env.UI_BASE_URL,
+      }
+    },
+    {
+      name: 'e2e-ui-test',
+      testMatch: /e2e\.spec\.js/,
+      dependencies: ['setup-up'],
+      use: {
+
+        baseURL: process.env.UI_BASE_URL,
+        // headless: !!process.env.CI ? true : false,
+        storageState: 'data/storegState.json',
       },
-      // testIgnore стосується всього проекту, тому він поза use
-      testIgnore: /.*api\.spec\.js/,
     },
     {
       name: 'api',
-      use: { 
+      use: {
         baseURL: process.env.API_BASE_URL
       },
-      // Цей проект запускатиме ТІЛЬКИ API тести
       testMatch: /api\.spec\.js/,
     },
 
