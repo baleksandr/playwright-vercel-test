@@ -54,6 +54,9 @@ jobs:
       run: npx playwright install --with-deps
 
     - name: Run API
+      env:
+        API_BASE_URL: ${{ secrets.API_BASE_URL }}
+        CI: true
       run: npm run api
 
     - uses: actions/upload-artifact@v4
