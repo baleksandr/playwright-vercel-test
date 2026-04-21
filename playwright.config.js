@@ -27,6 +27,13 @@ export default defineConfig({
     ['list'],
   ],
   use: {
+    geolocation: {
+      latitude: 50.4501,
+      longitude: 30.5234
+    },
+    permissions: ['geolocation'],
+    timezoneId: 'Europe/London',
+    locale: 'en-US',
     trace: 'retain-on-failure',
     screenshot: 'on-first-failure',
     headless: true,
