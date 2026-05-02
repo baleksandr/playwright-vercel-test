@@ -44,7 +44,7 @@ test.describe('E2e order flow', () => {
         })
 
         await test.step('Check catalog and price in the basket', async () => {
-            await app.basePage.checkPageURL('cart')
+            await app.abstractPage.checkPageURL('cart')
             await expect(app.basketPage.firstProductItem).toHaveText(items.firstProduct.name)
             await expect(app.basketPage.firstItemPrice).toHaveText(items.firstProduct.price)
             await expect(app.basketPage.secondProductItem).toHaveText(items.secondProduct.name)
@@ -56,7 +56,7 @@ test.describe('E2e order flow', () => {
         })
 
         await test.step('Fill payment data and checkout product', async () => {
-            await app.basePage.checkPageURL('checkout')
+            await app.abstractPage.checkPageURL('checkout')
             await app.checkoutPage.fillPaymentData(cardData)
             await expect(app.checkoutPage.totalAmount).not.toHaveText('$0.00');
 
@@ -65,8 +65,8 @@ test.describe('E2e order flow', () => {
         })
 
         await test.step('Check my orders and Logout user', async () => {
-            await app.basePage.goToMyAccount()
-            await app.basePage.checkPageURL('account')
+            await app.abstractPage.goToMyAccount()
+            await app.abstractPage.checkPageURL('account')
 
             await app.myAccountPage.checkTotalOrder(items)
             await expect(app.myAccountPage.logoutBtn).toBeVisible()
@@ -75,7 +75,7 @@ test.describe('E2e order flow', () => {
         })
 
         await test.step('Open login user page', async () => {
-            await app.basePage.checkPageURL('login')
+            await app.abstractPage.checkPageURL('login')
             await app.checkoutPage.expectedMessage(app.loginPage.loginTitle, '🔑 Login to Your Account')
             await app.loginPage.checkLoginButtonVisibleState()
         })

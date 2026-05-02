@@ -1,6 +1,6 @@
-import { BasePage } from './BasePage';
+import { AbstractPage } from './AbstractPage';
 
-export class CheckoutPage extends BasePage {
+export class CheckoutPage extends AbstractPage {
     constructor(page) {
         super(page)
         this.page = page;

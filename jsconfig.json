@@ -1,0 +1,22 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "ignoreDeprecations": "6.0",
+    "target": "ESNext",
+    "module": "CommonJS",
+    "strict": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "paths": {
+      "page-object/*": ["page-object/*"],
+      "tests/*": ["tests/*"],
+      "utils/*": ["utils/*"]
+    }
+  },
+  "include": [
+    "page-object",
+    "tests",
+    "utils"
+  ]
+}

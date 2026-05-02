@@ -6,11 +6,11 @@
       "localStorage": [
         {
           "name": "currentUser",
-          "value": "Aleks+1777737256586@ukr.net"
+          "value": "Aleks+1777742108449@ukr.net"
         },
         {
           "name": "users",
-          "value": "[{\"firstName\":\"Derek\",\"lastName\":\"Botsford\",\"email\":\"Aleks+1777737256586@ukr.net\",\"password\":\"Aleks123\",\"city\":\"Chesapeake\",\"country\":\"Ukraine\",\"phone\":\"+380569491623\",\"street\":\"57949 Aspen Close Suite 102\",\"zip\":\"49523\"}]"
+          "value": "[{\"firstName\":\"Jeremy\",\"lastName\":\"Bradtke\",\"email\":\"Aleks+1777742108449@ukr.net\",\"password\":\"Aleks123\",\"city\":\"Torpchester\",\"country\":\"Ukraine\",\"phone\":\"+380345920811\",\"street\":\"7533 River Road Suite 677\",\"zip\":\"02968\"}]"
         },
         {
           "name": "isAuthenticated",

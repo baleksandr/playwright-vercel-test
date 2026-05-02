@@ -1,7 +1,7 @@
-import { BasePage } from './BasePage';
+import { AbstractPage } from './AbstractPage';
 import { expect } from '@playwright/test';
 
-export class MyAccountPage extends BasePage {
+export class MyAccountPage extends AbstractPage {
     constructor(page) {
         super(page)
         this.myAccountOrderTotalAmount = page.locator('#account-order-0 p', { hasText: 'Total Amount:' })

@@ -5,7 +5,7 @@ import { CatalogPage } from '../page-object/CatalogPage'
 import { BasketPage } from '../page-object/BasketPage'
 import { CheckoutPage } from '../page-object/CheckoutPage'
 import { MyAccountPage } from '../page-object/MyAccountPage'
-import { BasePage } from '../page-object/BasePage'
+import { AbstractPage } from '../page-object/AbstractPage'
 
 export const test = base.extend({
     app: async ({ page }, use) => {
@@ -16,7 +16,7 @@ export const test = base.extend({
             basketPage: new BasketPage(page),
             checkoutPage: new CheckoutPage(page),
             myAccountPage: new MyAccountPage(page),
-            basePage: new BasePage(page),
+            abstractPage: new AbstractPage(page),
         }
         await use(app);
     }
