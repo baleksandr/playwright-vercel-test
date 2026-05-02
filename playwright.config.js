@@ -13,6 +13,7 @@ import 'dotenv/config';
  * @see https://playwright.dev/docs/test-configuration
  */
 export default defineConfig({
+  snapshotDir: './data',
   testDir: './tests',
   fullyParallel: false,
   /* Fail the build on CI if you accidentally left test.only in the source code. */
@@ -36,13 +37,13 @@ export default defineConfig({
     locale: 'en-US',
     trace: 'retain-on-failure',
     screenshot: 'on-first-failure',
-    headless: true,
+    headless: false,
   },
   globalTeardown: './global-teardown.ts',
   /* Configure projects for major browsers */
   projects: [
     {
-      name: 'setup-up',
+      name: 'setup-ui',
       testMatch: 'auth.setup.js',
       use: {
         baseURL: process.env.UI_BASE_URL,
@@ -51,11 +52,19 @@ export default defineConfig({
     {
       name: 'e2e-ui-test',
       testMatch: /e2e\.spec\.js/,
-      dependencies: ['setup-up'],
+      dependencies: ['setup-ui'],
       use: {
 
         baseURL: process.env.UI_BASE_URL,
-        // headless: !!process.env.CI ? true : false,
+        storageState: 'data/storegState.json',
+      },
+    },
+        {
+      name: 'visual-regression',
+      testMatch: /visualRegression\.spec\.js/,
+      dependencies: ['setup-ui'],
+      use: {
+        baseURL: process.env.UI_BASE_URL,
         storageState: 'data/storegState.json',
       },
     },

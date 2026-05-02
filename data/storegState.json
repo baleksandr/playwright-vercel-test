@@ -1,0 +1,22 @@
+{
+  "cookies": [],
+  "origins": [
+    {
+      "origin": "https://aqa-app.vercel.app",
+      "localStorage": [
+        {
+          "name": "currentUser",
+          "value": "Aleks+1777737256586@ukr.net"
+        },
+        {
+          "name": "users",
+          "value": "[{\"firstName\":\"Derek\",\"lastName\":\"Botsford\",\"email\":\"Aleks+1777737256586@ukr.net\",\"password\":\"Aleks123\",\"city\":\"Chesapeake\",\"country\":\"Ukraine\",\"phone\":\"+380569491623\",\"street\":\"57949 Aspen Close Suite 102\",\"zip\":\"49523\"}]"
+        },
+        {
+          "name": "isAuthenticated",
+          "value": "true"
+        }
+      ]
+    }
+  ]
+}
