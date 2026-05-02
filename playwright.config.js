@@ -37,7 +37,7 @@ export default defineConfig({
     locale: 'en-US',
     trace: 'retain-on-failure',
     screenshot: 'on-first-failure',
-    headless: false,
+    headless: true,
   },
   globalTeardown: './global-teardown.ts',
   /* Configure projects for major browsers */
